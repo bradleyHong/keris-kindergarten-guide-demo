@@ -139,6 +139,118 @@
         padding: 0 0 18px;
       }
 
+      .spark-guide {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+        align-items: center;
+        margin: 14px 0 18px;
+        padding: 13px 16px;
+        border: 1px solid #d7b64a;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #fff8d7 0%, #ffffff 50%, #eef6ff 100%);
+        color: #5d4211;
+        font-weight: 900;
+        box-shadow: 0 10px 28px rgba(162, 99, 20, 0.12);
+        overflow: hidden;
+      }
+
+      .spark-guide::before,
+      .spark-guide::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #f6c743;
+        box-shadow: 0 0 0 5px rgba(246, 199, 67, 0.16), 0 0 18px rgba(246, 199, 67, 0.5);
+        animation: sparklePulse 1.45s ease-in-out infinite;
+      }
+
+      .spark-guide::after {
+        animation-delay: 0.45s;
+      }
+
+      .spark-guide span {
+        display: block;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+
+      .spark-guide small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .scroll-arrow {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--brand);
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1;
+        animation: arrowBounce 1.15s ease-in-out infinite;
+      }
+
+      .click-strip {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin: 22px 0 0;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--muted);
+        font-weight: 900;
+      }
+
+      .click-strip strong {
+        position: relative;
+        color: var(--brand);
+        padding: 0 6px;
+      }
+
+      .click-strip strong::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(246, 199, 67, 0.38);
+        z-index: -1;
+        animation: highlightSweep 1.6s ease-in-out infinite;
+      }
+
+      .click-strip span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @keyframes sparklePulse {
+        0%, 100% { opacity: 0.42; transform: scale(0.72); }
+        50% { opacity: 1; transform: scale(1.14); }
+      }
+
+      @keyframes arrowBounce {
+        0%, 100% { transform: translateY(-1px); }
+        50% { transform: translateY(4px); }
+      }
+
+      @keyframes highlightSweep {
+        0%, 100% { transform: scaleX(0.68); opacity: 0.45; }
+        50% { transform: scaleX(1); opacity: 0.9; }
+      }
+
       .manager-item {
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -630,6 +742,17 @@
         transition: border-color 0.18s ease, box-shadow 0.18s ease, translate 0.18s ease;
       }
 
+      .card:hover {
+        border-color: var(--brand);
+        box-shadow: 0 16px 36px rgba(80, 96, 168, 0.14);
+        translate: 0 -2px;
+      }
+
+      .card.active {
+        border-color: var(--brand);
+        box-shadow: 0 0 0 2px rgba(80, 96, 168, 0.14), 0 16px 36px rgba(80, 96, 168, 0.16);
+      }
+
       .card-preview {
         position: relative;
         height: 132px;
@@ -1041,6 +1164,37 @@
           flex-wrap: wrap;
         }
 
+        .spark-guide {
+          grid-template-columns: 1fr auto;
+          margin: 12px 0 14px;
+          padding: 12px;
+        }
+
+        .spark-guide > div:nth-child(2) {
+          display: none;
+        }
+
+        .spark-guide span {
+          font-size: 0.95rem;
+        }
+
+        .spark-guide small {
+          font-size: 0.78rem;
+          line-height: 1.45;
+        }
+
+        .click-strip {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 5px;
+          margin-top: 18px;
+        }
+
+        .click-strip span {
+          font-size: 0.78rem;
+          line-height: 1.45;
+        }
+
         .site-logo {
           width: 184px;
           max-width: 100%;
@@ -1224,6 +1378,15 @@
         </div>
       </section>
 
+      <div class="spark-guide" aria-label="스크롤 안내">
+        <div>
+          <span>스크롤 내려보세요.</span>
+          <small>영상 아래 6개 메뉴를 눌러 클릭형 이용가이드를 확인할 수 있습니다.</small>
+        </div>
+        <div></div>
+        <div class="scroll-arrow" aria-hidden="true">↓</div>
+      </div>
+
       <section class="toolbar" aria-label="영상 검색과 분류">
         <input id="search" class="field" type="search" placeholder="검색어 입력: 홍길동, 회원가입, 원서접수, 모집요강, 모바일" />
         <select id="audience" class="field" aria-label="대상 선택">
@@ -1293,6 +1456,10 @@
         </details>
       </section>
 
+      <div class="click-strip">
+        <strong>클릭해보세요.</strong>
+        <span>각 메뉴를 누르면 영상과 상세 안내가 해당 내용으로 바로 바뀝니다.</span>
+      </div>
       <section id="cards" class="cards" aria-label="매뉴얼 영상 목록"></section>
       <div id="empty" class="empty">검색 조건에 맞는 영상이 없습니다.</div>
 
