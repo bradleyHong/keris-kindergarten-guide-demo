@@ -108,28 +108,17 @@
         display: block;
       }
 
-      .edu-logo {
-        min-height: 38px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0 12px;
+      .office-logo {
+        width: 178px;
+        max-width: 22vw;
+        height: 42px;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        padding: 4px 10px;
         border-radius: 8px;
         border: 1px solid var(--line);
         background: #fff;
-        color: #174272;
-        font-weight: 900;
-        white-space: nowrap;
-      }
-
-      .edu-logo::before {
-        content: "";
-        width: 22px;
-        height: 22px;
-        border-radius: 50% 50% 50% 8px;
-        background: linear-gradient(135deg, #0f7fc2 0 46%, #39a95d 47% 72%, #f5b325 73% 100%);
-        transform: rotate(-18deg);
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.42);
       }
 
       .manager-strip {
@@ -480,14 +469,14 @@
       .start-coach::after {
         content: "";
         position: absolute;
-        left: 22px;
-        bottom: -7px;
+        right: -7px;
+        top: 50%;
         width: 12px;
         height: 12px;
         background: #fff2b6;
         border-right: 1px solid #d9b13e;
         border-bottom: 1px solid #d9b13e;
-        transform: rotate(45deg);
+        transform: translateY(-50%) rotate(-45deg);
       }
 
       .player-button,
@@ -1308,10 +1297,11 @@
           max-width: 100%;
         }
 
-        .edu-logo {
-          min-height: 34px;
-          font-size: 0.82rem;
-          padding: 0 10px;
+        .office-logo {
+          width: 150px;
+          max-width: 46vw;
+          height: 34px;
+          padding: 3px 8px;
         }
 
         .status {
@@ -1367,7 +1357,10 @@
         }
 
         .start-coach::after {
-          display: none;
+          display: block;
+          right: -5px;
+          width: 9px;
+          height: 9px;
         }
 
         .player-progress {
@@ -1503,7 +1496,7 @@
         </div>
         <div class="top-actions">
           <img class="site-logo" src="assets/logo/keris-logo.gif" alt="KERIS 한국교육학술정보원" />
-          <div class="edu-logo" aria-label="시도교육청">시도교육청</div>
+          <img class="office-logo" src="assets/logo/seoul-education-logo.svg" alt="서울특별시교육청" />
           <div class="status">담당자 전용 · 클릭형 가이드</div>
         </div>
       </div>
@@ -1558,7 +1551,7 @@
             <div id="video-quick" class="video-quick" aria-label="영상 안 단계 이동"></div>
             <div class="player-tools" aria-label="영상 재생 조작">
               <div class="player-start">
-                <div class="start-coach">눌러보세요</div>
+                <div class="start-coach">눌러보세요 →</div>
                 <button id="restart" class="player-button primary" type="button">처음부터 보기</button>
               </div>
               <button id="play-toggle" class="player-button" type="button">재생</button>
