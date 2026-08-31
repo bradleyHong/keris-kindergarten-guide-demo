@@ -7,14 +7,14 @@
     <style>
       :root {
         color-scheme: light;
-        --ink: #17243f;
-        --muted: #52617f;
-        --line: #cddcf3;
+        --ink: #14213d;
+        --muted: #53627d;
+        --line: #d6e1f0;
         --panel: #ffffff;
-        --soft: #eef6ff;
-        --brand: #5060a8;
+        --soft: #f1f6fd;
+        --brand: #425aa4;
         --brand-2: #80b0e0;
-        --bg: #f7fbff;
+        --bg: #f5f8fc;
         --manager: #24345c;
         --ok: #39785a;
         --warn: #a26314;
@@ -26,7 +26,7 @@
         margin: 0;
         font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
         color: var(--ink);
-        background: linear-gradient(135deg, #f7fbff 0%, #ffffff 45%, #edf6ff 100%);
+        background: #f5f8fc;
         overflow-x: hidden;
       }
 
@@ -40,7 +40,7 @@
 
       header {
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.76);
+        background: #ffffff;
       }
 
       .top {
@@ -86,7 +86,7 @@
 
       .status {
         border: 1px solid var(--line);
-        background: #fff;
+        background: #f6f9fe;
         border-radius: 8px;
         padding: 10px 14px;
         color: var(--brand);
@@ -146,29 +146,20 @@
         gap: 12px;
         align-items: center;
         margin: 14px 0 18px;
-        padding: 13px 16px;
-        border: 1px solid #d7b64a;
+        padding: 13px 16px 13px 18px;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--brand);
         border-radius: 8px;
-        background: linear-gradient(135deg, #fff8d7 0%, #ffffff 50%, #eef6ff 100%);
-        color: #5d4211;
+        background: #ffffff;
+        color: var(--ink);
         font-weight: 900;
-        box-shadow: 0 10px 28px rgba(162, 99, 20, 0.12);
+        box-shadow: 0 8px 22px rgba(20, 33, 61, 0.04);
         overflow: hidden;
       }
 
       .spark-guide::before,
       .spark-guide::after {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #f6c743;
-        box-shadow: 0 0 0 5px rgba(246, 199, 67, 0.16), 0 0 18px rgba(246, 199, 67, 0.5);
-        animation: sparklePulse 1.45s ease-in-out infinite;
-      }
-
-      .spark-guide::after {
-        animation-delay: 0.45s;
+        display: none;
       }
 
       .spark-guide span {
@@ -191,11 +182,12 @@
         border-radius: 50%;
         display: grid;
         place-items: center;
-        background: var(--brand);
-        color: #fff;
+        background: #eef4fc;
+        border: 1px solid var(--line);
+        color: var(--brand);
         font-size: 1rem;
         line-height: 1;
-        animation: arrowBounce 1.15s ease-in-out infinite;
+        animation: arrowBounce 1.35s ease-in-out infinite;
       }
 
       .click-strip {
@@ -340,9 +332,10 @@
       .viewer,
       .side,
       .doc-band {
-        background: rgba(255, 255, 255, 0.9);
+        background: #ffffff;
         border: 1px solid var(--line);
         border-radius: 8px;
+        box-shadow: 0 10px 28px rgba(20, 33, 61, 0.05);
       }
 
       .viewer { overflow: hidden; }
@@ -360,27 +353,28 @@
         justify-content: space-between;
         gap: 10px;
         padding: 0 14px;
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         font-weight: 900;
         letter-spacing: 0;
       }
 
       .video-label {
-        background: #f4f8ff;
-        color: var(--brand);
+        background: #f8fafd;
+        color: #31456f;
         border-bottom: 1px solid var(--line);
       }
 
       .quick-label {
-        background: #182848;
-        color: #dce8ff;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        background: #20335f;
+        color: #e8eefb;
+        border-top: 1px solid #17243f;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
 
       .paper-label {
-        background: #fff;
-        color: var(--brand);
-        border-top: 1px solid var(--line);
+        background: #f8fafd;
+        color: #31456f;
+        border-top: 1px solid #c8d6eb;
         border-bottom: 1px solid var(--line);
       }
 
@@ -412,16 +406,16 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
         width: 100%;
-        padding: 8px 14px;
+        padding: 9px 14px;
         border-top: 1px solid rgba(255, 255, 255, 0.14);
-        background: #2e3e67;
+        background: #243861;
       }
 
       .video-quick button {
         min-height: 32px;
         border: 1px solid rgba(255, 255, 255, 0.28);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.1);
         color: #fff;
         font-size: 0.78rem;
         font-weight: 900;
@@ -455,9 +449,9 @@
         grid-template-columns: auto auto minmax(130px, 1fr) auto;
         gap: 9px;
         align-items: center;
-        padding: 10px 14px 12px;
+        padding: 10px 14px;
         border-top: 1px solid rgba(255, 255, 255, 0.12);
-        background: #23345e;
+        background: #17243f;
       }
 
       .player-start {
@@ -472,14 +466,14 @@
         align-items: center;
         min-height: 26px;
         padding: 0 10px;
-        border: 1px solid #d7a91f;
+        border: 1px solid #d9b13e;
         border-radius: 8px;
-        background: #ffd84f;
-        color: #5a3e08;
+        background: #fff2b6;
+        color: #5d4211;
         font-size: 0.78rem;
         font-weight: 900;
-        box-shadow: 0 0 0 5px rgba(255, 216, 79, 0.18), 0 8px 18px rgba(162, 99, 20, 0.16);
-        animation: clickPulse 1.35s ease-in-out infinite;
+        box-shadow: 0 0 0 4px rgba(255, 216, 79, 0.12);
+        animation: clickPulse 1.8s ease-in-out infinite;
         white-space: nowrap;
       }
 
@@ -490,9 +484,9 @@
         bottom: -7px;
         width: 12px;
         height: 12px;
-        background: #ffd84f;
-        border-right: 1px solid #d7a91f;
-        border-bottom: 1px solid #d7a91f;
+        background: #fff2b6;
+        border-right: 1px solid #d9b13e;
+        border-bottom: 1px solid #d9b13e;
         transform: rotate(45deg);
       }
 
@@ -513,8 +507,8 @@
       .player-button:hover,
       .jump-button:hover,
       .jump-button.active {
-        background: var(--brand);
-        border-color: var(--brand);
+        background: #4058a6;
+        border-color: #4058a6;
         color: #fff;
       }
 
@@ -1771,6 +1765,8 @@
       const phase = document.querySelector("#phase");
       const cards = document.querySelector("#cards");
       const empty = document.querySelector("#empty");
+      const viewer = document.querySelector(".viewer");
+      const guideDetail = document.querySelector(".guide-detail");
       const video = document.querySelector("#video");
       const restart = document.querySelector("#restart");
       const playToggle = document.querySelector("#play-toggle");
@@ -1843,6 +1839,15 @@
         video.pause();
       }
 
+      function bringVideoIntoView() {
+        if (guideDetail) {
+          guideDetail.open = false;
+        }
+        requestAnimationFrame(() => {
+          viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+
       function selectGuide(id, autoPlay = false) {
         const guide = guides.find((item) => item.id === id) || guides[0];
         activeId = guide.id;
@@ -1913,6 +1918,7 @@
       cards.addEventListener("click", (event) => {
         const card = event.target.closest(".card");
         if (!card) return;
+        bringVideoIntoView();
         selectGuide(Number(card.dataset.id), true);
       });
 
