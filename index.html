@@ -115,14 +115,9 @@
 
       .top-actions {
         display: flex;
-        gap: 10px;
+        gap: 16px;
         justify-items: end;
         align-items: center;
-        padding: 8px;
-        border: 1px solid #d7e4ef;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.84);
-        box-shadow: 0 10px 26px rgba(0, 68, 124, 0.06);
       }
 
       .site-logo {
@@ -133,20 +128,16 @@
       }
 
       .office-logo {
-        width: 154px;
-        max-width: 22vw;
-        height: 42px;
+        width: 132px;
+        max-width: 18vw;
+        height: auto;
         object-fit: contain;
         object-position: center;
         display: block;
-        padding: 5px 10px;
-        border-radius: 8px;
-        border: 1px solid #d8e4ee;
-        background: #fff;
       }
 
       .moe-logo {
-        padding: 5px 11px;
+        mix-blend-mode: multiply;
       }
 
       .header-peek {
@@ -540,7 +531,8 @@
         display: inline-flex;
         align-items: center;
         min-height: 26px;
-        padding: 0 10px;
+        margin-right: 10px;
+        padding: 0 11px;
         border: 1px solid #d7a91f;
         border-radius: 8px;
         background: #fff3b2;
@@ -555,14 +547,15 @@
       .start-coach::after {
         content: "";
         position: absolute;
-        right: -7px;
+        right: -15px;
         top: 50%;
-        width: 12px;
-        height: 12px;
-        background: #fff3b2;
-        border-right: 1px solid #d7a91f;
-        border-bottom: 1px solid #d7a91f;
-        transform: translateY(-50%) rotate(-45deg);
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-left: 15px solid #ffd84f;
+        transform: translateY(-50%);
+        filter: drop-shadow(1px 0 0 #d7a91f);
       }
 
       .player-button,
@@ -1359,7 +1352,6 @@
           justify-content: center;
           flex-wrap: wrap;
           width: 100%;
-          padding: 9px;
         }
 
         .spark-guide {
@@ -1399,10 +1391,8 @@
         }
 
         .office-logo {
-          width: 136px;
-          max-width: 46vw;
-          height: 34px;
-          padding: 3px 7px;
+          width: 118px;
+          max-width: 38vw;
         }
 
         .header-peek {
@@ -1455,6 +1445,7 @@
         .start-coach {
           display: inline-flex;
           min-height: 24px;
+          margin-right: 8px;
           padding: 0 7px;
           border-radius: 7px;
           font-size: 0.66rem;
@@ -1463,9 +1454,12 @@
 
         .start-coach::after {
           display: block;
-          right: -5px;
-          width: 9px;
-          height: 9px;
+          right: -12px;
+          width: 0;
+          height: 0;
+          border-top-width: 7px;
+          border-bottom-width: 7px;
+          border-left-width: 12px;
         }
 
         .player-progress {
