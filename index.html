@@ -353,6 +353,37 @@
         position: relative;
       }
 
+      .module-label {
+        min-height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 14px;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .video-label {
+        background: #f4f8ff;
+        color: var(--brand);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .quick-label {
+        background: #182848;
+        color: #dce8ff;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .paper-label {
+        background: #fff;
+        color: var(--brand);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
       video {
         width: 100%;
         height: auto;
@@ -411,6 +442,11 @@
 
       .viewer-body {
         padding: 18px;
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.045) 1px, transparent 1px),
+          #ffffff;
+        background-size: 24px 24px, 24px 24px, auto;
       }
 
       .player-tools {
@@ -1310,7 +1346,9 @@
         }
 
         .player-tools {
-          grid-template-columns: auto auto minmax(54px, 1fr) auto;
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
           gap: 6px;
           padding: 8px 10px;
           border-width: 0;
@@ -1319,23 +1357,39 @@
         }
 
         .player-start {
-          display: contents;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          flex: 0 0 auto;
         }
 
         .start-coach {
+          display: inline-flex;
+          min-height: 24px;
+          padding: 0 7px;
+          border-radius: 7px;
+          font-size: 0.66rem;
+          box-shadow: 0 0 0 3px rgba(255, 216, 79, 0.16);
+        }
+
+        .start-coach::after {
           display: none;
         }
 
         .player-progress {
-          grid-column: auto;
-          min-width: 54px;
+          flex: 1 1 44px;
+          min-width: 44px;
         }
 
         .player-button {
           min-height: 30px;
-          padding: 0 8px;
-          font-size: 0.76rem;
+          padding: 0 7px;
+          font-size: 0.7rem;
           border-radius: 7px;
+        }
+
+        .player-start .player-button {
+          padding: 0 8px;
         }
 
         .player-button.primary {
@@ -1343,7 +1397,8 @@
         }
 
         .player-time {
-          font-size: 0.72rem;
+          flex: 0 0 auto;
+          font-size: 0.68rem;
           white-space: nowrap;
         }
 
@@ -1502,12 +1557,14 @@
       <section class="layout">
         <article class="viewer" aria-live="polite">
           <div class="video-wrap">
+            <div class="module-label video-label"><span>영상 가이드</span><span>30초 요약</span></div>
             <video id="video" playsinline preload="metadata" poster="assets/manuals/01_signup.png?v=focus-box-final" src="assets/manuals/01_signup.mp4?v=focus-box-final"></video>
             <div id="video-placeholder" class="video-placeholder">이 메뉴는 제안 범위상 제작 예정입니다.<br />카드 이미지와 단계 구조만 확인해주세요.</div>
+            <div class="module-label quick-label"><span>하단 메뉴바</span><span>필요한 구간 바로 보기</span></div>
             <div id="video-quick" class="video-quick" aria-label="영상 안 단계 이동"></div>
             <div class="player-tools" aria-label="영상 재생 조작">
               <div class="player-start">
-                <div class="start-coach">먼저 눌러보세요</div>
+                <div class="start-coach">눌러보세요</div>
                 <button id="restart" class="player-button primary" type="button">처음부터 보기</button>
               </div>
               <button id="play-toggle" class="player-button" type="button">재생</button>
@@ -1517,6 +1574,7 @@
               <span id="player-time" class="player-time">0:00 / 0:30</span>
             </div>
           </div>
+          <div class="module-label paper-label"><span>종이 매뉴얼 요약</span><span>핵심 내용 확인</span></div>
           <div class="viewer-body">
             <div id="jump-row" class="jump-row" aria-label="급한 사용자용 빠른 이동"></div>
             <div id="current-eyebrow" class="eyebrow">01 · 접수 전</div>
