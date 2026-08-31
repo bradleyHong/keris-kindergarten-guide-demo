@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2027학년도 유치원입학 이용가이드 제안 샘플</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17243f;
+        --muted: #52617f;
+        --line: #cddcf3;
+        --panel: #ffffff;
+        --soft: #eef6ff;
+        --brand: #5060a8;
+        --brand-2: #80b0e0;
+        --bg: #f7fbff;
+        --manager: #24345c;
+        --ok: #39785a;
+        --warn: #a26314;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, #f7fbff 0%, #ffffff 45%, #edf6ff 100%);
+        overflow-x: hidden;
+      }
+
+      a { color: inherit; }
+      button, input, select { font: inherit; }
+
+      .shell {
+        width: min(1220px, calc(100vw - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 24px 0 18px;
+      }
+
+      .brand {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 14px;
+        align-items: center;
+        min-width: 0;
+      }
+
+      .mark {
+        width: 54px;
+        height: 54px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: var(--brand);
+        font-weight: 900;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.58rem, 3vw, 2.35rem);
+        line-height: 1.2;
+        letter-spacing: 0;
+        word-break: keep-all;
+      }
+
+      .sub {
+        color: var(--muted);
+        margin: 8px 0 0;
+        line-height: 1.55;
+      }
+
+      .status {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 8px;
+        padding: 10px 14px;
+        color: var(--brand);
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .manager-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 0 18px;
+      }
+
+      .manager-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 11px 12px;
+        color: var(--manager);
+        font-weight: 900;
+        line-height: 1.34;
+      }
+
+      .manager-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+        margin-top: 3px;
+      }
+
+      main {
+        padding: 24px 0 54px;
+      }
+
+      .notice {
+        display: grid;
+        grid-template-columns: 82px 1fr;
+        gap: 18px;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.86);
+        border-radius: 8px;
+        padding: 16px 18px;
+        margin-bottom: 18px;
+      }
+
+      .notice img {
+        width: 76px;
+        height: auto;
+        display: block;
+      }
+
+      .notice strong {
+        display: block;
+        color: var(--brand);
+        margin-bottom: 4px;
+      }
+
+      .notice p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr 170px 170px;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .field {
+        min-height: 46px;
+        width: 100%;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        border-radius: 8px;
+        padding: 0 13px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .viewer,
+      .side,
+      .doc-band {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .viewer { overflow: hidden; }
+
+      .video-wrap {
+        background: #17243f;
+        display: block;
+        position: relative;
+      }
+
+      video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        display: block;
+        background: #17243f;
+        cursor: pointer;
+      }
+
+      .video-placeholder {
+        position: absolute;
+        inset: 0;
+        display: none;
+        place-items: center;
+        padding: 20px;
+        background: rgba(23, 36, 63, 0.7);
+        color: #fff;
+        text-align: center;
+        font-weight: 900;
+        line-height: 1.45;
+      }
+
+      .video-quick {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        padding: 8px 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        background: #2e3e67;
+      }
+
+      .video-quick button {
+        min-height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: 900;
+        cursor: pointer;
+        padding: 0 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .video-quick button.active,
+      .video-quick button:hover {
+        background: #fff;
+        border-color: #fff;
+        color: var(--brand);
+      }
+
+
+      .viewer-body {
+        padding: 18px;
+      }
+
+      .player-tools {
+        position: static;
+        display: grid;
+        grid-template-columns: auto auto minmax(130px, 1fr) auto;
+        gap: 9px;
+        align-items: center;
+        padding: 10px 14px 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        background: #23345e;
+      }
+
+      .player-button,
+      .jump-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--brand);
+        padding: 0 12px;
+        font-weight: 900;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .player-button.primary,
+      .player-button:hover,
+      .jump-button:hover,
+      .jump-button.active {
+        background: var(--brand);
+        border-color: var(--brand);
+        color: #fff;
+      }
+
+      .player-progress {
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(216, 232, 248, 0.36);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .player-progress span {
+        display: block;
+        width: 0%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--brand-2);
+      }
+
+      .player-time {
+        color: #fff;
+        font-size: 0.84rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .jump-row {
+        display: none;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: -5px 0 16px;
+      }
+
+      .eyebrow {
+        color: var(--brand);
+        font-weight: 900;
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        margin: 5px 0 8px;
+        font-size: 1.5rem;
+        letter-spacing: 0;
+        word-break: keep-all;
+      }
+
+      .summary {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 13px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        background: var(--soft);
+        color: var(--brand);
+        border-radius: 8px;
+        padding: 7px 9px;
+        font-weight: 850;
+        font-size: 0.84rem;
+      }
+
+      .side {
+        padding: 16px;
+        position: static;
+      }
+
+      .guide-detail {
+        overflow: hidden;
+      }
+
+      .guide-detail summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 58px;
+        padding: 0 18px;
+        color: var(--brand);
+        font-weight: 900;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .guide-detail summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .guide-detail summary::after {
+        content: "펼치기";
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 8px;
+        background: var(--brand);
+        color: #fff;
+        font-size: 0.86rem;
+      }
+
+      .guide-detail[open] summary::after {
+        content: "접기";
+      }
+
+      .detail-content {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 14px;
+        padding: 0 16px 16px;
+      }
+
+      .side h3,
+      .doc-band h3 {
+        margin: 0 0 12px;
+        font-size: 1.05rem;
+      }
+
+      .mock-window {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8fbff;
+        overflow: hidden;
+        margin-bottom: 14px;
+      }
+
+      .mock-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        background: #eef6ff;
+        color: var(--brand);
+        font-weight: 900;
+        font-size: 0.86rem;
+      }
+
+      .mock-body {
+        padding: 12px;
+      }
+
+      .demo-fields {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .demo-field {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8fbff;
+        padding: 9px 10px;
+      }
+
+      .demo-label {
+        display: block;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 850;
+        margin-bottom: 3px;
+      }
+
+      .demo-value {
+        color: var(--ink);
+        font-weight: 900;
+      }
+
+      .demo-actions,
+      .step-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .demo-button,
+      .step-tab {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--brand);
+        padding: 0 10px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .demo-button:hover,
+      .demo-button.active,
+      .step-tab:hover,
+      .step-tab.active {
+        background: var(--brand);
+        border-color: var(--brand);
+        color: #fff;
+      }
+
+      .demo-message {
+        margin: 11px 0 0;
+        color: #2f3f64;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        padding: 10px 11px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .step-detail {
+        margin: 0 0 12px;
+        color: #2f3f64;
+        line-height: 1.5;
+        font-size: 0.94rem;
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8fbff;
+      }
+
+      .guide-help {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+        margin-bottom: 12px;
+      }
+
+      .guide-help-item {
+        display: grid;
+        gap: 7px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 9px;
+        color: #2f3f64;
+        font-weight: 850;
+        line-height: 1.32;
+        font-size: 0.8rem;
+      }
+
+      .guide-help-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        background: var(--brand);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 900;
+      }
+
+      .step-tabs {
+        margin: 2px 0 16px;
+      }
+
+      .step-tab {
+        flex: 1 1 112px;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 9px;
+      }
+
+      .check {
+        display: grid;
+        grid-template-columns: 23px 1fr;
+        gap: 9px;
+        align-items: start;
+        color: #2f3f64;
+        line-height: 1.48;
+      }
+
+      .check span:first-child {
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #e9f7f0;
+        color: var(--ok);
+        font-weight: 900;
+        font-size: 0.78rem;
+        margin-top: 1px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 8px;
+        padding: 13px;
+        cursor: pointer;
+        text-align: left;
+        min-height: 248px;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease, translate 0.18s ease;
+      }
+
+      .card-preview {
+        position: relative;
+        height: 132px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        margin-bottom: 10px;
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.055) 1px, transparent 1px),
+          linear-gradient(135deg, #eef6ff 0%, #fff 58%, #d8e8f8 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .card-preview::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 34px;
+        background: var(--brand);
+      }
+
+      .preview-copy {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        z-index: 2;
+        width: 58%;
+        color: var(--ink);
+      }
+
+      .preview-copy strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 1.42rem;
+        line-height: 1.12;
+        letter-spacing: 0;
+        word-break: keep-all;
+      }
+
+      .preview-copy span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 8px;
+        border-radius: 6px;
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--brand);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .preview-character {
+        position: absolute;
+        right: 14px;
+        bottom: 13px;
+        z-index: 2;
+        width: 102px;
+        height: 102px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 999px;
+        border: 1px solid rgba(205, 220, 243, 0.9);
+        background: #fff;
+        filter: drop-shadow(0 13px 17px rgba(80, 96, 168, 0.18));
+      }
+
+      .pose-1 .preview-character {
+        right: 16px;
+        width: 108px;
+        height: 108px;
+        transform: rotate(-4deg);
+      }
+
+      .pose-2 .preview-character {
+        right: 18px;
+        width: 106px;
+        height: 106px;
+        transform: rotate(4deg);
+      }
+
+      .pose-3 .preview-character {
+        right: 14px;
+        bottom: 9px;
+        width: 110px;
+        height: 110px;
+        transform: rotate(2deg);
+      }
+
+      .pose-4 .preview-character {
+        right: 20px;
+        bottom: 12px;
+        width: 104px;
+        height: 104px;
+        transform: translateY(-4px) rotate(-5deg);
+      }
+
+      .pose-5 .preview-character {
+        right: 15px;
+        width: 108px;
+        height: 108px;
+        transform: translateY(-7px) rotate(7deg);
+      }
+
+      .pose-6 .preview-character {
+        right: 17px;
+        bottom: 10px;
+        width: 110px;
+        height: 110px;
+        transform: rotate(-2deg);
+      }
+
+      .preview-step {
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        z-index: 3;
+        padding: 5px 8px;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--brand);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .card-thumb {
+        width: 100%;
+        height: 132px;
+        object-fit: cover;
+        object-position: center 45%;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        margin-bottom: 10px;
+        background: #eef6ff;
+      }
+
+      .card:hover,
+      .card.active {
+        border-color: var(--brand);
+        box-shadow: 0 14px 28px rgba(80, 96, 168, 0.12);
+        translate: 0 -2px;
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .num {
+        color: var(--brand);
+        font-weight: 900;
+      }
+
+      .tag {
+        color: var(--warn);
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .card h3 {
+        margin: 9px 0 6px;
+        font-size: 1.12rem;
+        word-break: keep-all;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 0.88rem;
+      }
+
+      .card-flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .card-flow span {
+        border-radius: 8px;
+        background: #eef6ff;
+        border: 1px solid var(--line);
+        color: var(--brand);
+        padding: 5px 7px;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .doc-band {
+        margin-top: 20px;
+        padding: 17px;
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .doc-band p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .doc-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 13px;
+        border-radius: 8px;
+        background: var(--brand);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .doc-link.secondary {
+        background: #eef6ff;
+        color: var(--brand);
+        border: 1px solid var(--line);
+      }
+
+      .empty {
+        display: none;
+        margin-top: 16px;
+        color: var(--muted);
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      @media (max-width: 1120px) {
+        .shell {
+          width: min(1000px, calc(100vw - 28px));
+        }
+
+        .manager-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .top,
+        .notice,
+        .toolbar,
+        .layout,
+        .cards,
+        .doc-band {
+          grid-template-columns: 1fr;
+        }
+
+        .manager-strip {
+          display: none;
+        }
+
+        .shell {
+          width: calc(100vw - 32px);
+        }
+
+        header {
+          background: rgba(255, 255, 255, 0.92);
+        }
+
+        main {
+          padding-top: 18px;
+        }
+
+        .brand {
+          grid-template-columns: 42px 1fr;
+          align-items: start;
+          gap: 10px;
+        }
+
+        .mark {
+          width: 42px;
+          height: 42px;
+        }
+
+        h1 {
+          font-size: 1.48rem;
+          line-height: 1.24;
+        }
+
+        .sub {
+          margin-top: 6px;
+          font-size: 0.9rem;
+          line-height: 1.42;
+        }
+
+        .status {
+          white-space: normal;
+          text-align: center;
+          padding: 8px 12px;
+        }
+
+        .side {
+          position: static;
+          display: block;
+        }
+
+        .card {
+          min-height: auto;
+        }
+
+        .card-thumb {
+          aspect-ratio: 16 / 9;
+        }
+
+        .demo-actions,
+        .step-tabs {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .player-tools {
+          grid-template-columns: auto auto minmax(88px, 1fr) auto;
+          gap: 6px;
+          padding: 8px;
+          border-width: 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+          background: #253761;
+        }
+
+        .player-button {
+          min-height: 30px;
+          padding: 0 9px;
+          font-size: 0.76rem;
+        }
+
+        .player-time {
+          font-size: 0.72rem;
+        }
+
+        .detail-content {
+          grid-template-columns: 1fr;
+        }
+
+        .guide-help {
+          grid-template-columns: 1fr;
+        }
+
+        .demo-button,
+        .step-tab,
+        .doc-link {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .shell {
+          width: calc(100vw - 24px);
+        }
+
+        .top {
+          padding-top: 20px;
+          gap: 14px;
+        }
+
+        .sub,
+        .notice p,
+        .summary,
+        .doc-band p,
+        .card p {
+          line-height: 1.58;
+        }
+
+        .notice {
+          padding: 14px;
+          gap: 12px;
+        }
+
+        .notice img {
+          width: 54px;
+        }
+
+        .notice p {
+          display: block;
+          overflow: visible;
+        }
+
+        .toolbar {
+          gap: 8px;
+        }
+
+        .field {
+          min-height: 48px;
+        }
+
+        .viewer-body,
+        .side,
+        .doc-band {
+          padding: 14px;
+        }
+
+        .demo-actions,
+        .step-tabs {
+          grid-template-columns: 1fr;
+        }
+
+        .video-quick {
+          width: 100%;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+          padding: 5px 8px;
+        }
+
+        .video-quick button {
+          min-height: 25px;
+          font-size: 0.58rem;
+          padding: 0 4px;
+        }
+
+        .card-preview {
+          height: 118px;
+        }
+
+        .preview-copy strong {
+          font-size: 1.18rem;
+        }
+
+        .preview-character {
+          width: 82px;
+          height: 82px;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell top">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">입학</div>
+          <div>
+            <h1>2027학년도 유치원입학 이용가이드 담당자 검토용</h1>
+            <p class="sub">30초 매뉴얼 영상, 한국어 여성 보이스, 배경음악, 클릭형 HTML 이용가이드를 함께 확인하는 과업 수행 예시입니다.</p>
+          </div>
+        </div>
+        <div class="status">담당자 전용 · 클릭형 가이드</div>
+      </div>
+      <div class="shell manager-strip" aria-label="담당자 검토 요약">
+        <div class="manager-item">담당자 전용 검토<span>외부 공개 전 시안 확인</span></div>
+        <div class="manager-item">웹 최적화<span>상세보기 접이식 안내 제공</span></div>
+        <div class="manager-item">모바일 최적화<span>세로 화면에서 순차 확인</span></div>
+        <div class="manager-item">원본 제공<span>음성·배경음악·영상 분리 납품</span></div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="notice">
+        <img src="assets/character/kedu-character.png" alt="" />
+        <div>
+          <strong>실제 자료 기반, 공개 범위는 제안용으로 제한</strong>
+          <p>2026학년도 실제 사용자안내서 구조를 참고해 2027학년도 수행 예시로 구성했습니다. 최종 사업에서는 최신 안내서와 기관 검수 기준에 맞춰 화면, 원고, 음성을 교체합니다.</p>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="영상 검색과 분류">
+        <input id="search" class="field" type="search" placeholder="검색어 입력: 홍길동, 회원가입, 원서접수, 모집요강, 모바일" />
+        <select id="audience" class="field" aria-label="대상 선택">
+          <option value="all">전체 대상</option>
+          <option value="parent">학부모</option>
+          <option value="kindergarten">유치원</option>
+        </select>
+        <select id="phase" class="field" aria-label="단계 선택">
+          <option value="all">전체 단계</option>
+          <option value="before">접수 전</option>
+          <option value="apply">원서접수</option>
+          <option value="result">결과·등록</option>
+        </select>
+      </section>
+
+      <section class="layout">
+        <article class="viewer" aria-live="polite">
+          <div class="video-wrap">
+            <video id="video" playsinline preload="metadata" poster="assets/manuals/01_signup.png" src="assets/manuals/01_signup.mp4"></video>
+            <div id="video-placeholder" class="video-placeholder">이 메뉴는 제안 범위상 제작 예정입니다.<br />카드 이미지와 단계 구조만 확인해주세요.</div>
+            <div id="video-quick" class="video-quick" aria-label="영상 안 단계 이동"></div>
+            <div class="player-tools" aria-label="영상 재생 조작">
+              <button id="restart" class="player-button primary" type="button">처음부터 보기</button>
+              <button id="play-toggle" class="player-button" type="button">재생</button>
+              <div id="player-progress" class="player-progress" role="button" tabindex="0" aria-label="영상 진행 위치">
+                <span id="player-progress-fill"></span>
+              </div>
+              <span id="player-time" class="player-time">0:00 / 0:30</span>
+            </div>
+          </div>
+          <div class="viewer-body">
+            <div id="jump-row" class="jump-row" aria-label="급한 사용자용 빠른 이동"></div>
+            <div id="current-eyebrow" class="eyebrow">01 · 접수 전</div>
+            <h2 id="current-title">회원가입·자녀등록</h2>
+            <p id="current-summary" class="summary">유보통합포털 회원가입 후 내자녀관리에서 홍길동, 2021년생 예시 정보를 등록하는 흐름입니다.</p>
+            <div id="current-chips" class="chips"></div>
+          </div>
+        </article>
+
+        <details class="side guide-detail">
+          <summary>상세보기: 이미지로 따라하기</summary>
+          <div class="detail-content">
+            <div>
+              <h3>이미지 설명</h3>
+              <p id="step-detail" class="step-detail">영상을 보다가 막히는 단계가 있으면 아래 버튼을 눌러 해당 구간으로 바로 이동합니다.</p>
+              <div class="guide-help" aria-label="이용 방법">
+                <div class="guide-help-item"><span class="guide-help-num">1</span><span>단계 버튼을 누릅니다.</span></div>
+                <div class="guide-help-item"><span class="guide-help-num">2</span><span>영상이 해당 초로 이동합니다.</span></div>
+                <div class="guide-help-item"><span class="guide-help-num">3</span><span>입력값을 같이 확인합니다.</span></div>
+              </div>
+              <div class="mock-window">
+                <div class="mock-head"><span id="mock-title">내자녀관리</span><span id="mock-state">0초</span></div>
+                <div class="mock-body">
+                  <div id="demo-fields" class="demo-fields"></div>
+                  <div id="demo-actions" class="demo-actions"></div>
+                  <p id="demo-message" class="demo-message"></p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3>영상 구간 이동</h3>
+              <div id="step-tabs" class="step-tabs"></div>
+              <h3>체크리스트</h3>
+              <div id="checklist" class="checklist"></div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section id="cards" class="cards" aria-label="매뉴얼 영상 목록"></section>
+      <div id="empty" class="empty">검색 조건에 맞는 영상이 없습니다.</div>
+
+      <section class="doc-band">
+        <div>
+          <h3>업체 공유 기준</h3>
+          <p>1, 2번은 30초 완성 영상으로 제공하고, 3~6번은 제안용 메뉴 구조로 남겼습니다. 사이트 제작사는 메뉴 데이터와 MP4 파일만 연결하면 바로 반영할 수 있습니다.</p>
+        </div>
+        <a class="doc-link secondary" href="assets/docs/voice-scripts.json">음성 원고</a>
+        <a class="doc-link" href="assets/manuals/01_signup.mp4">영상 원본 예시</a>
+      </section>
+    </main>
+
+    <script>
+      const guides = [
+        {
+          id: 1,
+          title: "회원가입·자녀등록",
+          phase: "before",
+          audience: "parent",
+          tag: "30초 완성",
+          completed: true,
+          summary: "유보통합포털 회원가입 후 내자녀관리에서 홍길동, 2021년생 예시 정보를 등록하는 흐름입니다.",
+          chips: ["유보통합포털", "홍길동 예시", "2021년생"],
+          mockTitle: "내자녀관리",
+          fields: [["유아명", "홍길동"], ["생년월일", "2021.05.14"], ["모집연령", "만 5세"]],
+          actions: ["자녀추가", "저장", "확인"],
+          flow: ["회원가입", "자녀등록", "저장확인"],
+          quick: ["유보통합포털 접속", "본인인증 후 로그인", "자녀 정보 입력"],
+          quickShort: ["포털 접속", "본인인증", "자녀입력"],
+          times: [2, 7, 15],
+          checks: ["본인인증 후 회원정보 입력", "내자녀관리에서 자녀 정보 저장", "로그인과 저장 완료 상태 확인"],
+          character: "assets/character/poses/01_signup.png",
+          video: "assets/manuals/01_signup.mp4?v=natural-cursor-mascot",
+          poster: "assets/manuals/01_signup.png?v=natural-cursor-mascot"
+        },
+        {
+          id: 2,
+          title: "모집요강 찾기",
+          phase: "before",
+          audience: "parent",
+          tag: "30초 완성",
+          completed: true,
+          summary: "지원할 유치원의 모집연령, 모집과정, 지원 자격, 입학설명회 정보를 확인하는 흐름입니다.",
+          chips: ["모집요강", "모집연령", "입학설명회"],
+          mockTitle: "모집요강 찾기",
+          fields: [["지역", "서울특별시"], ["유치원명", "행복유치원"], ["모집과정", "교육과정"]],
+          actions: ["지역선택", "검색", "요강보기"],
+          flow: ["지역검색", "유치원선택", "요강확인"],
+          quick: ["지역 선택", "유치원명 검색", "모집연령 확인"],
+          quickShort: ["지역선택", "유치원검색", "연령확인"],
+          times: [2, 6, 12],
+          checks: ["지원 연령과 과정 확인", "유치원별 지원 자격 확인", "입학설명회와 안내사항 확인"],
+          character: "assets/character/poses/02_guide.png",
+          video: "assets/manuals/02_guide.mp4?v=natural-cursor-mascot",
+          poster: "assets/manuals/02_guide.png?v=natural-cursor-mascot"
+        },
+        {
+          id: 3,
+          title: "우선모집 원서접수",
+          phase: "apply",
+          audience: "parent",
+          tag: "제작 예정",
+          completed: false,
+          summary: "우선모집 대상 자격을 확인하고 지원 유치원 선택, 추가정보 입력, 접수완료 확인까지 안내합니다.",
+          chips: ["우선모집", "온라인 검증", "접수완료"],
+          mockTitle: "우선모집 원서접수관리",
+          fields: [["지원순위", "1희망"], ["우선자격", "온라인 검증"], ["접수상태", "접수완료"]],
+          actions: ["자격확인", "원서작성", "접수완료"],
+          flow: ["대상확인", "추가정보", "완료확인"],
+          quick: ["자격 조건 확인", "지원 유치원 선택", "접수완료 확인"],
+          checks: ["우선모집 자격 조건 확인", "온라인 검증 시 인증서 필요 여부 확인", "접수완료와 반려 여부 확인"],
+          character: "assets/character/poses/03_priority.png",
+          poster: "assets/manuals/03_priority.png?v=keris-logo-detail"
+        },
+        {
+          id: 4,
+          title: "일반모집 원서접수",
+          phase: "apply",
+          audience: "parent",
+          tag: "제작 예정",
+          completed: false,
+          summary: "사전접수와 본접수 일정을 확인하고 희망순을 신중하게 선택한 뒤 접수 상태를 확인합니다.",
+          chips: ["일반모집", "사전접수", "희망순"],
+          mockTitle: "일반모집 원서접수관리",
+          fields: [["접수구분", "본접수"], ["1희망", "행복유치원"], ["상태", "접수완료"]],
+          actions: ["유치원검색", "희망순선택", "접수확인"],
+          flow: ["일정확인", "희망순", "접수완료"],
+          quick: ["접수 기간 확인", "희망순 선택", "접수완료 확인"],
+          checks: ["사전접수와 본접수 일정 확인", "희망순 선택 전 유치원 정보 재확인", "접수완료 상태 확인"],
+          character: "assets/character/poses/04_general.png",
+          poster: "assets/manuals/04_general.png?v=keris-logo-detail"
+        },
+        {
+          id: 5,
+          title: "선발결과 확인·등록",
+          phase: "result",
+          audience: "parent",
+          tag: "제작 예정",
+          completed: false,
+          summary: "자동추첨 결과 확인 후 등록마감 전 등록완료 상태를 확인하는 흐름입니다.",
+          chips: ["자동추첨", "선발결과", "등록완료"],
+          mockTitle: "선발결과 확인",
+          fields: [["선발결과", "선발"], ["등록처리", "등록"], ["최종상태", "등록완료"]],
+          actions: ["결과조회", "등록", "완료확인"],
+          flow: ["결과확인", "등록선택", "상태확인"],
+          quick: ["선발결과 조회", "등록 여부 확인", "등록완료 확인"],
+          checks: ["선착순이 아닌 자동추첨 방식 안내", "선발결과 메뉴에서 상태 확인", "등록마감 전 등록완료 확인"],
+          character: "assets/character/poses/05_result.png",
+          poster: "assets/manuals/05_result.png?v=keris-logo-detail"
+        },
+        {
+          id: 6,
+          title: "추가모집·모바일 이용",
+          phase: "result",
+          audience: "parent",
+          tag: "제작 예정",
+          completed: false,
+          summary: "추가모집 기간, 결원정보, 모바일 브라우저 환경과 팝업 허용 설정을 안내합니다.",
+          chips: ["추가모집", "결원정보", "모바일"],
+          mockTitle: "추가모집·결원정보",
+          fields: [["모집구분", "추가모집"], ["결원정보", "조회"], ["설정", "팝업 허용"]],
+          actions: ["결원조회", "접수가능", "팝업허용"],
+          flow: ["추가모집", "결원정보", "모바일점검"],
+          quick: ["추가모집 일정 확인", "결원정보 조회", "모바일 환경 점검"],
+          checks: ["추가모집 가능 유치원 확인", "결원정보와 접수 가능 상태 확인", "모바일 브라우저와 팝업 허용 점검"],
+          character: "assets/character/poses/06_mobile.png",
+          poster: "assets/manuals/06_mobile.png?v=keris-logo-detail"
+        }
+      ];
+
+      const phaseLabel = { before: "접수 전", apply: "원서접수", result: "결과·등록" };
+      const search = document.querySelector("#search");
+      const audience = document.querySelector("#audience");
+      const phase = document.querySelector("#phase");
+      const cards = document.querySelector("#cards");
+      const empty = document.querySelector("#empty");
+      const video = document.querySelector("#video");
+      const restart = document.querySelector("#restart");
+      const playToggle = document.querySelector("#play-toggle");
+      const playerProgress = document.querySelector("#player-progress");
+      const playerProgressFill = document.querySelector("#player-progress-fill");
+      const playerTime = document.querySelector("#player-time");
+      const jumpRow = document.querySelector("#jump-row");
+      const videoPlaceholder = document.querySelector("#video-placeholder");
+      const currentEyebrow = document.querySelector("#current-eyebrow");
+      const currentTitle = document.querySelector("#current-title");
+      const currentSummary = document.querySelector("#current-summary");
+      const currentChips = document.querySelector("#current-chips");
+      const checklist = document.querySelector("#checklist");
+      const demoFields = document.querySelector("#demo-fields");
+      const demoActions = document.querySelector("#demo-actions");
+      const demoMessage = document.querySelector("#demo-message");
+      const stepDetail = document.querySelector("#step-detail");
+      const mockTitle = document.querySelector("#mock-title");
+      const mockState = document.querySelector("#mock-state");
+      const stepTabs = document.querySelector("#step-tabs");
+      const videoQuick = document.querySelector("#video-quick");
+      let activeId = 1;
+
+      function formatTime(seconds) {
+        const value = Math.max(0, Math.floor(seconds || 0));
+        return `${Math.floor(value / 60)}:${String(value % 60).padStart(2, "0")}`;
+      }
+
+      function renderCards() {
+        const query = search.value.trim().toLowerCase();
+        const filtered = guides.filter((guide) => {
+          const text = [guide.title, guide.summary, ...guide.chips, ...guide.checks, ...guide.fields.flat()].join(" ").toLowerCase();
+          const queryOk = !query || text.includes(query);
+          const audienceOk = audience.value === "all" || guide.audience === audience.value;
+          const phaseOk = phase.value === "all" || guide.phase === phase.value;
+          return queryOk && audienceOk && phaseOk;
+        });
+
+        cards.innerHTML = filtered
+          .map((guide) => `
+            <button class="card ${guide.id === activeId ? "active" : ""}" data-id="${guide.id}">
+              <div class="card-preview pose-${guide.id}" aria-hidden="true">
+                <div class="preview-copy">
+                  <strong>${guide.title.replace("·", "<br />")}</strong>
+                  <span>${guide.flow[0]}</span>
+                </div>
+                <div class="preview-step">${String(guide.id).padStart(2, "0")} / 06</div>
+                <img class="preview-character" src="${guide.character || "assets/character/kedu-character.png"}" alt="" loading="lazy" />
+              </div>
+              <div class="card-top">
+                <span class="num">${String(guide.id).padStart(2, "0")}</span>
+                <span class="tag">${guide.tag}</span>
+              </div>
+              <h3>${guide.title}</h3>
+              <p>${guide.summary}</p>
+              <div class="card-flow">${guide.flow.slice(0, 3).map((step) => `<span>${step}</span>`).join("")}</div>
+            </button>
+          `)
+          .join("");
+
+        empty.style.display = filtered.length ? "none" : "block";
+      }
+
+      function startVideo() {
+        video.play().catch(() => {});
+      }
+
+      function pauseVideo() {
+        video.pause();
+      }
+
+      function selectGuide(id, autoPlay = false) {
+        const guide = guides.find((item) => item.id === id) || guides[0];
+        activeId = guide.id;
+        currentEyebrow.textContent = `${String(guide.id).padStart(2, "0")} · ${phaseLabel[guide.phase]}`;
+        currentTitle.textContent = guide.title;
+        currentSummary.textContent = guide.summary;
+        currentChips.innerHTML = guide.chips.map((chip) => `<span class="chip">${chip}</span>`).join("");
+        mockTitle.textContent = guide.mockTitle;
+        mockState.textContent = "0초";
+        stepDetail.textContent = "영상을 보다가 막히는 단계가 있으면 아래 버튼을 눌러 해당 구간으로 바로 이동합니다.";
+        demoFields.innerHTML = guide.fields.map(([label, value]) => `<div class="demo-field"><span class="demo-label">${label}</span><span class="demo-value">${value}</span></div>`).join("");
+        const segmentLabels = guide.quick || guide.flow;
+        const segmentTimes = guide.times || segmentLabels.map((_, index) => index * 10);
+        demoActions.innerHTML = guide.actions.map((label, index) => `<button class="demo-button ${index === 0 ? "active" : ""}" type="button" data-action="${label}" data-time="${segmentTimes[index] || 0}">${label}</button>`).join("");
+        stepTabs.innerHTML = segmentLabels.map((label, index) => `<button class="step-tab ${index === 0 ? "active" : ""}" type="button" data-step="${label}" data-time="${segmentTimes[index] || 0}">${label} · ${segmentTimes[index] || 0}초</button>`).join("");
+        const overlayLabels = guide.quickShort || segmentLabels;
+        videoQuick.innerHTML = overlayLabels.map((label, index) => `<button class="${index === 0 ? "active" : ""}" type="button" data-step="${segmentLabels[index]}" data-time="${segmentTimes[index] || 0}">${label}</button>`).join("");
+        jumpRow.innerHTML = segmentLabels.map((label, index) => `<button class="jump-button ${index === 0 ? "active" : ""}" type="button" data-step="${label}" data-time="${segmentTimes[index] || 0}">${label}</button>`).join("");
+        demoMessage.textContent = `${segmentLabels[0]} 단계입니다. 아래 버튼을 누르면 영상 위치도 함께 이동합니다.`;
+        checklist.innerHTML = guide.checks.map((item) => `<div class="check"><span>✓</span><div>${item}</div></div>`).join("");
+        video.poster = guide.poster;
+        if (guide.completed) {
+          video.controls = false;
+          video.src = guide.video;
+          video.load();
+          playToggle.disabled = false;
+          restart.disabled = false;
+          videoPlaceholder.style.display = "none";
+          if (autoPlay) {
+            video.addEventListener("canplay", startVideo, { once: true });
+          }
+        } else {
+          video.pause();
+          video.controls = false;
+          playToggle.disabled = true;
+          restart.disabled = true;
+          video.removeAttribute("src");
+          video.load();
+          videoPlaceholder.style.display = "grid";
+          stepDetail.textContent = "이 메뉴는 제안 범위상 제작 예정입니다. 카드 이미지와 단계형 안내 구조만 확인합니다.";
+          demoMessage.textContent = `${segmentLabels[0]} 단계 구조만 제안용으로 표시합니다. 실제 제작 시 한국어 여성 보이스와 30초 영상으로 완성합니다.`;
+        }
+        renderCards();
+      }
+
+      function moveToStep(time, label) {
+        const guide = guides.find((item) => item.id === activeId) || guides[0];
+        const segmentLabels = guide.quick || guide.flow;
+        const segmentTimes = guide.times || segmentLabels.map((_, index) => index * 10);
+        const activeIndex = segmentTimes.reduce((active, itemTime, index) => (time >= itemTime ? index : active), 0);
+        stepTabs.querySelectorAll(".step-tab").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        demoActions.querySelectorAll(".demo-button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        videoQuick.querySelectorAll("button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        jumpRow.querySelectorAll(".jump-button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        if (guide.completed) {
+          video.currentTime = time;
+          video.play().catch(() => {});
+        }
+        mockState.textContent = `${time}초`;
+        stepDetail.textContent = guide.completed
+          ? `${label} 구간으로 영상이 이동했습니다.`
+          : `${label} 단계 구조를 확인 중입니다.`;
+        demoMessage.textContent = guide.completed
+          ? `${label} 버튼을 누르면 영상과 입력 예시가 같은 단계로 맞춰집니다.`
+          : `${label} 단계 구성 예시입니다. 실제 제작 시 이 버튼이 해당 영상 구간으로 이동합니다.`;
+      }
+
+      cards.addEventListener("click", (event) => {
+        const card = event.target.closest(".card");
+        if (!card) return;
+        selectGuide(Number(card.dataset.id), true);
+      });
+
+      [search, audience, phase].forEach((control) => control.addEventListener("input", renderCards));
+      demoActions.addEventListener("click", (event) => {
+        const button = event.target.closest(".demo-button");
+        if (!button) return;
+        demoActions.querySelectorAll(".demo-button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        moveToStep(Number(button.dataset.time || 0), button.dataset.action);
+      });
+      stepTabs.addEventListener("click", (event) => {
+        const button = event.target.closest(".step-tab");
+        if (!button) return;
+        stepTabs.querySelectorAll(".step-tab").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        moveToStep(Number(button.dataset.time || 0), button.dataset.step);
+      });
+      videoQuick.addEventListener("click", (event) => {
+        const button = event.target.closest("button");
+        if (!button) return;
+        moveToStep(Number(button.dataset.time || 0), button.dataset.step);
+      });
+      jumpRow.addEventListener("click", (event) => {
+        const button = event.target.closest(".jump-button");
+        if (!button) return;
+        moveToStep(Number(button.dataset.time || 0), button.dataset.step);
+      });
+      restart.addEventListener("click", () => {
+        const guide = guides.find((item) => item.id === activeId) || guides[0];
+        if (!guide.completed) return;
+        video.currentTime = 0;
+        startVideo();
+      });
+      playToggle.addEventListener("click", () => {
+        if (video.paused) {
+          startVideo();
+        } else {
+          pauseVideo();
+        }
+      });
+      video.addEventListener("click", () => {
+        if (video.paused) {
+          startVideo();
+        } else {
+          pauseVideo();
+        }
+      });
+      playerProgress.addEventListener("click", (event) => {
+        const guide = guides.find((item) => item.id === activeId) || guides[0];
+        if (!guide.completed || !video.duration) return;
+        const rect = playerProgress.getBoundingClientRect();
+        const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+        video.currentTime = ratio * video.duration;
+        startVideo();
+      });
+      video.addEventListener("timeupdate", () => {
+        const guide = guides.find((item) => item.id === activeId) || guides[0];
+        if (!guide.completed) return;
+        const ratio = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+        playerProgressFill.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
+        playerTime.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration || 30)}`;
+        const segmentLabels = guide.quick || guide.flow;
+        const segmentTimes = guide.times || segmentLabels.map((_, index) => index * 10);
+        const activeIndex = segmentTimes.reduce((active, itemTime, index) => (video.currentTime >= itemTime ? index : active), 0);
+        mockState.textContent = `${segmentTimes[activeIndex] || 0}초`;
+        stepTabs.querySelectorAll(".step-tab").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        demoActions.querySelectorAll(".demo-button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        videoQuick.querySelectorAll("button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        jumpRow.querySelectorAll(".jump-button").forEach((item, index) => item.classList.toggle("active", index === activeIndex));
+        if (segmentLabels[activeIndex]) {
+          stepDetail.textContent = `${segmentLabels[activeIndex]} 구간을 재생 중입니다.`;
+        }
+      });
+      video.addEventListener("play", () => {
+        playToggle.textContent = "일시정지";
+      });
+      video.addEventListener("pause", () => {
+        playToggle.textContent = "재생";
+      });
+      selectGuide(1);
+    </script>
+  </body>
+</html>
