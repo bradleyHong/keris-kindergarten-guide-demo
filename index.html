@@ -39,6 +39,8 @@
       }
 
       header {
+        position: relative;
+        overflow: hidden;
         border-bottom: 1px solid var(--line);
         background: #ffffff;
       }
@@ -109,7 +111,7 @@
       }
 
       .office-logo {
-        width: 178px;
+        width: 164px;
         max-width: 22vw;
         height: 42px;
         object-fit: contain;
@@ -121,7 +123,49 @@
         background: #fff;
       }
 
+      .moe-logo {
+        padding: 5px 11px;
+      }
+
+      .header-peek {
+        position: absolute;
+        right: max(18px, calc((100vw - 1220px) / 2 + 8px));
+        bottom: -22px;
+        z-index: 0;
+        width: 94px;
+        height: 58px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-bottom: 0;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(180deg, #f7fbff 0%, #e7f1fb 100%);
+        box-shadow: 0 -8px 24px rgba(66, 90, 164, 0.08);
+        pointer-events: none;
+      }
+
+      .header-peek::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 11px;
+        border-top: 1px solid #c9d8eb;
+        background: #ffffff;
+      }
+
+      .header-peek img {
+        position: absolute;
+        left: 50%;
+        bottom: -38px;
+        width: 78px;
+        transform: translateX(-50%);
+        animation: peekFloat 2.7s ease-in-out infinite;
+      }
+
       .manager-strip {
+        position: relative;
+        z-index: 1;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 10px;
@@ -240,6 +284,11 @@
       @keyframes clickPulse {
         0%, 100% { transform: translateY(0); box-shadow: 0 0 0 5px rgba(255, 216, 79, 0.2); }
         50% { transform: translateY(-1px); box-shadow: 0 0 0 9px rgba(255, 216, 79, 0.34); }
+      }
+
+      @keyframes peekFloat {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-3px); }
       }
 
       .manager-item {
@@ -862,6 +911,19 @@
         animation: clickPulse 1.35s ease-in-out infinite;
       }
 
+      .card-cta::before {
+        content: "";
+        position: absolute;
+        left: -11px;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        background: #ffd84f;
+        border-left: 1px solid #d5a31b;
+        border-bottom: 1px solid #d5a31b;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
       .card-cta::after {
         content: "";
         position: absolute;
@@ -1298,10 +1360,14 @@
         }
 
         .office-logo {
-          width: 150px;
+          width: 136px;
           max-width: 46vw;
           height: 34px;
-          padding: 3px 8px;
+          padding: 3px 7px;
+        }
+
+        .header-peek {
+          display: none;
         }
 
         .status {
@@ -1496,7 +1562,7 @@
         </div>
         <div class="top-actions">
           <img class="site-logo" src="assets/logo/keris-logo.gif" alt="KERIS 한국교육학술정보원" />
-          <img class="office-logo" src="assets/logo/seoul-education-logo.svg" alt="서울특별시교육청" />
+          <img class="office-logo moe-logo" src="assets/logo/moe-logo.jpg" alt="교육부" />
           <div class="status">담당자 전용 · 클릭형 가이드</div>
         </div>
       </div>
@@ -1505,6 +1571,9 @@
         <div class="manager-item">웹 최적화<span>상세보기 접이식 안내 제공</span></div>
         <div class="manager-item">모바일 최적화<span>세로 화면에서 순차 확인</span></div>
         <div class="manager-item">원본 제공<span>음성·배경음악·영상 분리 납품</span></div>
+      </div>
+      <div class="header-peek" aria-hidden="true">
+        <img src="assets/character/poses/clean/01_signup.png" alt="" />
       </div>
     </header>
 
@@ -1807,7 +1876,7 @@
                   <span>${guide.flow[0]}</span>
                 </div>
                 <div class="preview-step">${String(guide.id).padStart(2, "0")} / 06</div>
-                <div class="card-cta">클릭해보세요</div>
+                <div class="card-cta">클릭해보세요 →</div>
                 <img class="preview-character" src="${guide.character || "assets/character/kedu-character.png"}" alt="" loading="lazy" />
               </div>
               <div class="card-top">
