@@ -94,6 +94,44 @@
         white-space: nowrap;
       }
 
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        justify-items: end;
+        align-items: center;
+      }
+
+      .site-logo {
+        width: 238px;
+        max-width: 28vw;
+        height: auto;
+        display: block;
+      }
+
+      .edu-logo {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #174272;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .edu-logo::before {
+        content: "";
+        width: 22px;
+        height: 22px;
+        border-radius: 50% 50% 50% 8px;
+        background: linear-gradient(135deg, #0f7fc2 0 46%, #39a95d 47% 72%, #f5b325 73% 100%);
+        transform: rotate(-18deg);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.42);
+      }
+
       .manager-strip {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -616,6 +654,54 @@
         background: var(--brand);
       }
 
+      .pose-1 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.052) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.052) 1px, transparent 1px),
+          linear-gradient(135deg, #eef6ff 0%, #ffffff 56%, #dceaff 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .pose-2 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(135deg, #eaf8f4 0%, #ffffff 54%, #d8eefb 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .pose-3 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(135deg, #f7f3df 0%, #ffffff 54%, #e8f2ff 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .pose-4 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(135deg, #eef2ff 0%, #ffffff 56%, #e7f5e8 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .pose-5 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(135deg, #eaf4ff 0%, #ffffff 54%, #fff3d5 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
+      .pose-6 {
+        background:
+          linear-gradient(rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 96, 168, 0.048) 1px, transparent 1px),
+          linear-gradient(135deg, #eef7ff 0%, #ffffff 54%, #e8f7ef 100%);
+        background-size: 24px 24px, 24px 24px, auto;
+      }
+
       .preview-copy {
         position: absolute;
         left: 18px;
@@ -654,11 +740,11 @@
         z-index: 2;
         width: 102px;
         height: 102px;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         border-radius: 999px;
         border: 1px solid rgba(205, 220, 243, 0.9);
-        background: #fff;
+        background: transparent;
         filter: drop-shadow(0 13px 17px rgba(80, 96, 168, 0.18));
       }
 
@@ -790,7 +876,7 @@
       .doc-band {
         margin-top: 20px;
         padding: 17px;
-        display: grid;
+        display: none;
         grid-template-columns: 1fr auto auto;
         gap: 12px;
         align-items: center;
@@ -892,6 +978,22 @@
           margin-top: 6px;
           font-size: 0.9rem;
           line-height: 1.42;
+        }
+
+        .top-actions {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .site-logo {
+          width: 184px;
+          max-width: 100%;
+        }
+
+        .edu-logo {
+          min-height: 34px;
+          font-size: 0.82rem;
+          padding: 0 10px;
         }
 
         .status {
@@ -1043,7 +1145,11 @@
             <p class="sub">30초 매뉴얼 영상, 한국어 여성 보이스, 배경음악, 클릭형 HTML 이용가이드를 함께 확인하는 과업 수행 예시입니다.</p>
           </div>
         </div>
-        <div class="status">담당자 전용 · 클릭형 가이드</div>
+        <div class="top-actions">
+          <img class="site-logo" src="assets/logo/keris-logo.gif" alt="KERIS 한국교육학술정보원" />
+          <div class="edu-logo" aria-label="시도교육청">시도교육청</div>
+          <div class="status">담당자 전용 · 클릭형 가이드</div>
+        </div>
       </div>
       <div class="shell manager-strip" aria-label="담당자 검토 요약">
         <div class="manager-item">담당자 전용 검토<span>외부 공개 전 시안 확인</span></div>
@@ -1163,7 +1269,7 @@
           quickShort: ["포털 접속", "본인인증", "자녀입력"],
           times: [2, 7, 15],
           checks: ["본인인증 후 회원정보 입력", "내자녀관리에서 자녀 정보 저장", "로그인과 저장 완료 상태 확인"],
-          character: "assets/character/poses/01_signup.png",
+          character: "assets/character/poses/clean/01_signup.png",
           video: "assets/manuals/01_signup.mp4?v=natural-cursor-mascot",
           poster: "assets/manuals/01_signup.png?v=natural-cursor-mascot"
         },
@@ -1184,7 +1290,7 @@
           quickShort: ["지역선택", "유치원검색", "연령확인"],
           times: [2, 6, 12],
           checks: ["지원 연령과 과정 확인", "유치원별 지원 자격 확인", "입학설명회와 안내사항 확인"],
-          character: "assets/character/poses/02_guide.png",
+          character: "assets/character/poses/clean/02_guide.png",
           video: "assets/manuals/02_guide.mp4?v=natural-cursor-mascot",
           poster: "assets/manuals/02_guide.png?v=natural-cursor-mascot"
         },
@@ -1203,7 +1309,7 @@
           flow: ["대상확인", "추가정보", "완료확인"],
           quick: ["자격 조건 확인", "지원 유치원 선택", "접수완료 확인"],
           checks: ["우선모집 자격 조건 확인", "온라인 검증 시 인증서 필요 여부 확인", "접수완료와 반려 여부 확인"],
-          character: "assets/character/poses/03_priority.png",
+          character: "assets/character/poses/clean/03_priority.png",
           poster: "assets/manuals/03_priority.png?v=keris-logo-detail"
         },
         {
@@ -1221,7 +1327,7 @@
           flow: ["일정확인", "희망순", "접수완료"],
           quick: ["접수 기간 확인", "희망순 선택", "접수완료 확인"],
           checks: ["사전접수와 본접수 일정 확인", "희망순 선택 전 유치원 정보 재확인", "접수완료 상태 확인"],
-          character: "assets/character/poses/04_general.png",
+          character: "assets/character/poses/clean/04_general.png",
           poster: "assets/manuals/04_general.png?v=keris-logo-detail"
         },
         {
@@ -1239,7 +1345,7 @@
           flow: ["결과확인", "등록선택", "상태확인"],
           quick: ["선발결과 조회", "등록 여부 확인", "등록완료 확인"],
           checks: ["선착순이 아닌 자동추첨 방식 안내", "선발결과 메뉴에서 상태 확인", "등록마감 전 등록완료 확인"],
-          character: "assets/character/poses/05_result.png",
+          character: "assets/character/poses/clean/05_result.png",
           poster: "assets/manuals/05_result.png?v=keris-logo-detail"
         },
         {
@@ -1257,7 +1363,7 @@
           flow: ["추가모집", "결원정보", "모바일점검"],
           quick: ["추가모집 일정 확인", "결원정보 조회", "모바일 환경 점검"],
           checks: ["추가모집 가능 유치원 확인", "결원정보와 접수 가능 상태 확인", "모바일 브라우저와 팝업 허용 점검"],
-          character: "assets/character/poses/06_mobile.png",
+          character: "assets/character/poses/clean/06_mobile.png",
           poster: "assets/manuals/06_mobile.png?v=keris-logo-detail"
         }
       ];
