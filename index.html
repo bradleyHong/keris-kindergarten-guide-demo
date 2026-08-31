@@ -918,6 +918,54 @@
         background: rgba(255, 255, 255, 0.65);
       }
 
+      .proposal-footer {
+        margin: 24px 0 0;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+        align-items: start;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .proposal-footer strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1.02rem;
+        margin-bottom: 3px;
+      }
+
+      .proposal-footer a {
+        color: var(--brand);
+        text-decoration: none;
+        font-weight: 900;
+      }
+
+      .proposal-history {
+        padding-left: 18px;
+        border-left: 1px solid var(--line);
+      }
+
+      .proposal-history p {
+        margin: 0 0 8px;
+      }
+
+      .proposal-history span {
+        display: inline-block;
+        margin: 3px 4px 0 0;
+        padding: 4px 8px;
+        border: 1px solid #cfddf3;
+        border-radius: 6px;
+        background: #f4f8ff;
+        color: #2e4778;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
       @media (max-width: 1120px) {
         .shell {
           width: min(1000px, calc(100vw - 28px));
@@ -938,8 +986,16 @@
         .toolbar,
         .layout,
         .cards,
-        .doc-band {
+        .doc-band,
+        .proposal-footer {
           grid-template-columns: 1fr;
+        }
+
+        .proposal-history {
+          padding-left: 0;
+          border-left: 0;
+          border-top: 1px solid var(--line);
+          padding-top: 12px;
         }
 
         .manager-strip {
@@ -1186,7 +1242,7 @@
       <section class="layout">
         <article class="viewer" aria-live="polite">
           <div class="video-wrap">
-            <video id="video" playsinline preload="metadata" poster="assets/manuals/01_signup.png" src="assets/manuals/01_signup.mp4"></video>
+            <video id="video" playsinline preload="metadata" poster="assets/manuals/01_signup.png?v=portal-sync-final" src="assets/manuals/01_signup.mp4?v=portal-sync-final"></video>
             <div id="video-placeholder" class="video-placeholder">이 메뉴는 제안 범위상 제작 예정입니다.<br />카드 이미지와 단계 구조만 확인해주세요.</div>
             <div id="video-quick" class="video-quick" aria-label="영상 안 단계 이동"></div>
             <div class="player-tools" aria-label="영상 재생 조작">
@@ -1248,6 +1304,26 @@
         <a class="doc-link secondary" href="assets/docs/voice-scripts.json">음성 원고</a>
         <a class="doc-link" href="assets/manuals/01_signup.mp4">영상 원본 예시</a>
       </section>
+
+      <footer class="proposal-footer">
+        <div>
+          <strong>제안기업 상상연필</strong>
+          대구광역시 수성구 동대구로 243 1층<br />
+          대구 소재 기업으로 현장 미팅, 수정 협의, 납품 후 소통을 빠르게 진행할 수 있습니다.<br />
+          연락처 010-9504-6000 · 이메일 <a href="mailto:bradley@visionpencil.co.kr">bradley@visionpencil.co.kr</a><br />
+          <a href="https://www.visionpencil.co.kr">www.visionpencil.co.kr</a>
+        </div>
+        <div class="proposal-history">
+          <strong>회사 매뉴얼·PPT 영상화 제작 연혁</strong>
+          <p>공공기관 및 기업 제안·보고자료를 영상 콘텐츠로 전환한 수행 경험을 기반으로 제작합니다.</p>
+          <span>KT&amp;G</span>
+          <span>한국환경공단</span>
+          <span>현대로보틱스</span>
+          <span>이수페타시스</span>
+          <span>대구시청 2040 대구도시계획안</span>
+          <span>대구시청 신공항도시 계획안 PPT 영상화</span>
+        </div>
+      </footer>
     </main>
 
     <script>
@@ -1270,8 +1346,8 @@
           times: [2, 7, 15],
           checks: ["본인인증 후 회원정보 입력", "내자녀관리에서 자녀 정보 저장", "로그인과 저장 완료 상태 확인"],
           character: "assets/character/poses/clean/01_signup.png",
-          video: "assets/manuals/01_signup.mp4?v=natural-cursor-mascot",
-          poster: "assets/manuals/01_signup.png?v=natural-cursor-mascot"
+          video: "assets/manuals/01_signup.mp4?v=portal-sync-final",
+          poster: "assets/manuals/01_signup.png?v=portal-sync-final"
         },
         {
           id: 2,
